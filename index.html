@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AAA Game Studio - Ultimate Gaming Experience">
+<meta name="description" content="AAA Game Studio - Ultimate 3D Experience">
 <title>AAA Game Studio</title>
 
 <!-- CSS -->
@@ -11,10 +11,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<!-- JS -->
-<script defer src="js/main.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- JS Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="js/main.js"></script>
 </head>
 <body>
 
@@ -33,15 +34,16 @@
     <div class="menu-toggle"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- Hero Section with Video Background -->
-<header id="home" class="hero-video">
+<!-- Hero Section with Video + 3D Canvas -->
+<header id="home" class="hero-3d">
     <video autoplay muted loop id="heroVideo">
         <source src="assets/videos/hero-bg.mp4" type="video/mp4">
     </video>
+    <canvas id="threeCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content" data-aos="fade-up">
-        <h1>Ultimate AAA Gaming Experience</h1>
-        <p>Immersive, interactive, and next-level gaming</p>
+        <h1>Ultimate AAA 3D Experience</h1>
+        <p>Immersive interactive games with 3D effects</p>
         <a href="#services" class="btn">Our Services</a>
     </div>
 </header>
@@ -49,7 +51,7 @@
 <!-- About Section -->
 <section id="about" class="about" data-aos="fade-up">
     <h2>About Us</h2>
-    <p>AAA Game Studio is a leading game development company specializing in AAA titles, VR/AR experiences, and interactive storytelling. Our team combines technology, creativity, and innovation to create unforgettable games.</p>
+    <p>AAA Game Studio creates next-level AAA titles combining VR, AR, and interactive storytelling with cutting-edge technology.</p>
 </section>
 
 <!-- Services Section -->
