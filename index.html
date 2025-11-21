@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AAA Game Studio - Ultimate Gaming Experience">
+<title>AAA Game Studio</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="style/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+<!-- JS -->
+<script defer src="js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">AAA Studio</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+</nav>
+
+<!-- Hero Section with Video Background -->
+<header id="home" class="hero-video">
+    <video autoplay muted loop id="heroVideo">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Ultimate AAA Gaming Experience</h1>
+        <p>Immersive, interactive, and next-level gaming</p>
+        <a href="#services" class="btn">Our Services</a>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>AAA Game Studio is a leading game development company specializing in AAA titles, VR/AR experiences, and interactive storytelling. Our team combines technology, creativity, and innovation to create unforgettable games.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <h2 data-aos="fade-up">Our Services</h2>
+    <div class="service-cards">
+        <div class="card" data-aos="flip-left">Game Development</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="100">3D Modeling & Animation</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="200">VR & AR Experiences</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="300">Game Publishing</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="400">Game Marketing</div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <h2 data-aos="fade-up">Our Portfolio</h2>
+    <div class="gallery">
+        <img src="assets/images/game1.jpg" alt="Game 1" data-aos="zoom-in">
+        <img src="assets/images/game2.jpg" alt="Game 2" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/images/game3.jpg" alt="Game 3" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/images/game4.jpg" alt="Game 4" data-aos="zoom-in" data-aos-delay="300">
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<!-- Team Section -->
+<section id="team" class="team">
+    <h2 data-aos="fade-up">Our Team</h2>
+    <div class="team-cards">
+        <div class="team-card" data-aos="fade-up">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+            <h3>John Doe</h3>
+            <p>Lead Developer</p>
+        </div>
+        <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/images/team2.jpg" alt="Team Member">
+            <h3>Jane Smith</h3>
+            <p>3D Artist</p>
+        </div>
+        <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="assets/images/team3.jpg" alt="Team Member">
+            <h3>Mike Brown</h3>
+            <p>Game Designer</p>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="blog">
+    <h2 data-aos="fade-up">Latest News</h2>
+    <div class="blog-cards">
+        <div class="blog-card" data-aos="fade-up">
+            <img src="assets/images/blog1.jpg" alt="Blog 1">
+            <h3>New Game Launch</h3>
+            <p>Our latest AAA game is now live on all platforms.</p>
+        </div>
+        <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/images/blog2.jpg" alt="Blog 2">
+            <h3>VR Experience Released</h3>
+            <p>Step into the world of virtual reality with our newest release.</p>
+        </div>
+        <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="assets/images/blog3.jpg" alt="Blog 3">
+            <h3>Behind the Scenes</h3>
+            <p>Meet the team and learn how our games are made.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2 data-aos="fade-up">Contact Us</h2>
+    <form id="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2025 AAA Game Studio. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
