@@ -127,10 +127,10 @@
     </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact Section (Formspree Real) -->
 <section id="contact" class="contact">
     <h2 data-aos="fade-up">Contact Us</h2>
-    <form id="contact-form" action="https://formspree.io/f/xpwnzjkv" method="POST">
+    <form action="https://formspree.io/f/xpwnzjkv" method="POST">
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
@@ -159,9 +159,9 @@
     <p>&copy; 2025 AAA Game Studio. All Rights Reserved.</p>
 </footer>
 
-<!-- Scripts for Form + Site -->
+<!-- Scripts -->
 <script>
-  // Mobile Menu Toggle
+  // Mobile Menu
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
@@ -221,33 +221,34 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // Form Submission via Formspree
-  const form = document.getElementById("contact-form");
+  // Formspree Submit
+  const form = document.querySelector("form");
   const status = document.getElementById("form-status");
 
-  async function handleSubmit(event) {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      status.innerText = "Thanks for your message!";
-      form.reset();
-    } else {
-      const resData = await response.json();
-      if (resData.errors) {
-        status.innerText = resData.errors.map(e => e.message).join(", ");
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        status.innerText = "Thanks! Your message has been sent.";
+        form.reset();
       } else {
-        status.innerText = "Oops! There was a problem submitting your form.";
+        const result = await response.json();
+        if (result.errors) {
+          status.innerText = result.errors.map(e => e.message).join(", ");
+        } else {
+          status.innerText = "Oops! There was a problem submitting your form.";
+        }
       }
+    } catch (error) {
+      status.innerText = "Network error. Please try again later.";
     }
-  }
-
-  form.addEventListener("submit", handleSubmit);
+  });
 </script>
 
 </body>
