@@ -1,0 +1,71 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+
+/* Navbar */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:#111; color:#fff; position:fixed; width:100%; top:0; z-index:1000; }
+.nav-links { list-style:none; }
+.nav-links li { display:inline-block; margin-left:30px; }
+.nav-links a { color:#fff; text-decoration:none; transition:color 0.3s; }
+.nav-links a:hover { color:#f39c12; }
+.menu-toggle { display:none; font-size:24px; cursor:pointer; }
+
+/* Hero Video Section */
+.hero-video { position:relative; height:100vh; overflow:hidden; }
+.hero-video video { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; }
+.hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2; }
+.hero-video .hero-content { position:relative; z-index:3; color:#fff; text-align:center; top:50%; transform:translateY(-50%); }
+.hero-video .hero-content h1 { font-size:3rem; margin-bottom:20px; }
+.hero-video .hero-content p { font-size:1.2rem; margin-bottom:30px; }
+.btn { background:#f39c12; color:#fff; padding:12px 30px; border-radius:5px; text-decoration:none; transition:background 0.3s; }
+.btn:hover { background:#e67e22; }
+
+/* Sections */
+section { padding:100px 40px; text-align:center; opacity:0; transform:translateY(50px); transition:all 0.8s ease-out; }
+.about, .services, .portfolio, .team, .blog, .contact { background:#f5f5f5; margin-top:80px; }
+h2 { font-size:2rem; margin-bottom:40px; }
+
+/* Service Cards */
+.service-cards { display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
+.card { background:#fff; padding:40px; border-radius:10px; box-shadow:0 10px 20px rgba(0,0,0,0.2); transition:transform 0.3s; }
+.card:hover { transform:translateY(-10px) perspective(600px) rotateY(5deg); }
+
+/* Portfolio Gallery */
+.gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.gallery img { width:200px; border-radius:10px; cursor:pointer; transition:transform 0.3s; }
+.gallery img:hover { transform:scale(1.1); }
+
+/* Lightbox */
+.lightbox { display:none; position:fixed; z-index:2000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
+.lightbox-content { max-width:90%; max-height:80%; border-radius:10px; }
+.lightbox .close { position:absolute; top:20px; right:40px; font-size:40px; color:#fff; cursor:pointer; }
+
+/* Team Section */
+.team-cards { display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
+.team-card { background:#fff; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition:transform 0.3s; }
+.team-card:hover { transform:translateY(-10px) perspective(600px) rotateY(5deg); }
+.team-card img { width:150px; border-radius:50%; margin-bottom:10px; }
+
+/* Blog Section */
+.blog-cards { display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
+.blog-card { background:#fff; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition:transform 0.3s; }
+.blog-card img { width:100%; border-radius:10px; margin-bottom:10px; }
+.blog-card:hover { transform:translateY(-10px); }
+
+/* Contact Form */
+.contact form { display:flex; flex-direction:column; max-width:500px; margin:auto; }
+.contact input, .contact textarea { padding:15px; margin-bottom:20px; border-radius:5px; border:1px solid #ccc; }
+.contact button { background:#111; color:#fff; padding:15px; border:none; border-radius:5px; cursor:pointer; }
+.contact button:hover { background:#f39c12; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background:#111; color:#fff; }
+footer .socials a { color:#fff; margin:0 10px; font-size:20px; transition:color 0.3s; }
+footer .socials a:hover { color:#f39c12; }
+
+/* Responsive */
+@media(max-width:768px){
+    .service-cards, .gallery, .team-cards, .blog-cards { flex-direction:column; align-items:center; }
+    .menu-toggle { display:block; }
+    .nav-links { display:none; flex-direction:column; gap:10px; background:#111; position:absolute; top:70px; right:40px; padding:20px; border-radius:10px; }
+    .nav-links.active { display:flex; }
+}
