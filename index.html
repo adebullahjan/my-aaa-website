@@ -18,6 +18,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#game-name-generator">Game Name Generator</a></li>
             </ul>
         </nav>
     </header>
@@ -92,6 +93,27 @@
         </div>
     </section>
 
+    <!-- ================= ADVANCED GAME NAME GENERATOR ================= -->
+    <section id="game-name-generator" style="padding: 50px 0; background-color: #f0f4f8;">
+      <div class="container" style="max-width: 900px; margin: auto; text-align: center;">
+        <h2 style="font-family: 'Arial', sans-serif; color: #333; margin-bottom: 10px;">Game Name Generator 🎮</h2>
+        <p style="color: #555; margin-bottom: 25px;">Enter a keyword or genre and generate multiple creative game names instantly!</p>
+
+        <!-- Input -->
+        <input id="gn-input" type="text" placeholder="Enter keyword or genre..." 
+               style="width: 70%; padding: 12px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 15px;">
+
+        <!-- Button -->
+        <button id="gn-button" 
+                style="padding: 12px 25px; font-size: 16px; border: none; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer; margin-left: 10px;">
+          Generate Names
+        </button>
+
+        <!-- Output -->
+        <div id="gn-output" style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
+      </div>
+    </section>
+
     <!-- ================= CONTACT SECTION ================= -->
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
@@ -128,6 +150,64 @@
             <a href="https://linkedin.com" target="_blank">LinkedIn</a>
         </div>
     </footer>
+
+    <!-- ================= ADVANCED GAME NAME GENERATOR JS ================= -->
+    <script>
+      const gnInput = document.getElementById('gn-input');
+      const gnButton = document.getElementById('gn-button');
+      const gnOutput = document.getElementById('gn-output');
+
+      const prefixes = ["Epic", "Dark", "Mystic", "Legend of", "Shadow", "Infinite", "Cyber", "Quantum", "Neo", "Final"];
+      const suffixes = ["Quest", "War", "Saga", "Chronicles", "Adventures", "Realm", "Odyssey", "Legends", "Strike", "Arena"];
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+
+      function generateGameNames() {
+        gnOutput.innerHTML = ""; // Clear previous output
+        const keyword = gnInput.value.trim();
+
+        for(let i = 0; i < 5; i++) {
+          let name = "";
+          if(keyword.length > 0) {
+            const usePrefix = Math.random() > 0.5;
+            const useSuffix = Math.random() > 0.5;
+            name = (usePrefix ? prefixes[getRandomInt(prefixes.length)] + " " : "") 
+                   + keyword 
+                   + (useSuffix ? " " + suffixes[getRandomInt(suffixes.length)] : "");
+          } else {
+            name = prefixes[getRandomInt(prefixes.length)] + " " + suffixes[getRandomInt(suffixes.length)];
+          }
+
+          // Create card element
+          const card = document.createElement("div");
+          card.style.background = "#fff";
+          card.style.padding = "15px 20px";
+          card.style.borderRadius = "8px";
+          card.style.boxShadow = "0 3px 8px rgba(0,0,0,0.1)";
+          card.style.cursor = "pointer";
+          card.style.transition = "transform 0.2s";
+          card.textContent = name;
+
+          card.addEventListener("click", () => {
+            navigator.clipboard.writeText(name);
+            card.textContent = name + " ✅ Copied!";
+            setTimeout(() => card.textContent = name, 1000);
+          });
+
+          card.addEventListener("mouseover", () => card.style.transform = "scale(1.05)");
+          card.addEventListener("mouseout", () => card.style.transform = "scale(1)");
+
+          gnOutput.appendChild(card);
+        }
+      }
+
+      gnButton.addEventListener("click", generateGameNames);
+      gnInput.addEventListener("keypress", function(e) {
+        if(e.key === "Enter") generateGameNames();
+      });
+    </script>
 
     <script src="main.js"></script>
 </body>
