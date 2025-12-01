@@ -1,53 +1,84 @@
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #050505, #111);
+    color: #fff;
+}
 
-/* Navbar */
-.navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:#111; color:#fff; position:fixed; width:100%; top:0; z-index:1000; }
-.nav-links { list-style:none; }
-.nav-links li { display:inline-block; margin-left:30px; }
-.nav-links a { color:#fff; text-decoration:none; transition:color 0.3s; }
-.nav-links a:hover { color:#f39c12; }
-.menu-toggle { display:none; font-size:24px; cursor:pointer; }
+/* محیط بازی */
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #0a0a0a, #111);
+}
 
-/* Hero Section */
-.hero-3d { position:relative; height:100vh; overflow:hidden; }
-.hero-3d video { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; }
-.hero-3d canvas#threeCanvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; }
-.hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:3; }
-.hero-content { position:relative; z-index:4; color:#fff; text-align:center; top:50%; transform:translateY(-50%); }
-.hero-content h1 { font-size:3rem; margin-bottom:20px; }
-.hero-content p { font-size:1.2rem; margin-bottom:30px; }
-.btn { background:#f39c12; color:#fff; padding:12px 30px; border-radius:5px; text-decoration:none; transition:background 0.3s, transform 0.3s; }
-.btn:hover { background:#e67e22; transform:scale(1.05); }
+/* بازیکن */
+#player {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #ff00ff, #ff66ff);
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff66ff;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
 
-/* Sections */
-section { padding:100px 40px; text-align:center; }
-h2 { font-size:2rem; margin-bottom:40px; }
+/* HUD */
+#score, #level, #powerup, #upgrade {
+    position: absolute;
+    font-size: 22px;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #66ffff;
+}
 
-/* Cards */
-.service-cards, .team-cards, .blog-cards { display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
-.card, .team-card, .blog-card { background:#fff; padding:40px; border-radius:10px; box-shadow:0 10px 20px rgba(0,0,0,0.2); transition:transform 0.5s; }
-.card:hover, .team-card:hover, .blog-card:hover { transform:translateY(-10px) perspective(600px) rotateY(5deg); }
+#score { top: 10px; left: 10px; }
+#level { top: 40px; left: 10px; }
+#powerup { top: 70px; left: 10px; }
+#upgrade { top: 100px; left: 10px; }
 
-/* Portfolio Swiper */
-.swiper { width:80%; height:400px; margin:auto; }
-.swiper-slide img { width:100%; height:100%; object-fit:cover; border-radius:10px; cursor:pointer; }
+/* اشیاء حافظه */
+.memory-circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00ffff, #66ffff);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #66ffff;
+    opacity: 0.8;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    animation: glowPulse 1s infinite alternate;
+}
 
-/* Contact Form */
-.contact form { display:flex; flex-direction:column; max-width:500px; margin:auto; }
-.contact input, .contact textarea { padding:15px; margin-bottom:20px; border-radius:5px; border:1px solid #ccc; }
-.contact button { background:#111; color:#fff; padding:15px; border:none; border-radius:5px; cursor:pointer; }
-.contact button:hover { background:#f39c12; transform:scale(1.05); }
+/* انیمیشن glow */
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 15px #00ffff, 0 0 30px #66ffff; transform: scale(1); }
+    100% { box-shadow: 0 0 30px #00ffff, 0 0 60px #66ffff; transform: scale(1.2); }
+}
 
-/* Footer */
-footer { text-align:center; padding:20px; background:#111; color:#fff; }
-footer .socials a { color:#fff; margin:0 10px; font-size:20px; transition:color 0.3s; }
-footer .socials a:hover { color:#f39c12; }
+/* باس‌ها */
+.boss-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff0000, #ff5555);
+    box-shadow: 0 0 30px #ff0000, 0 0 60px #ff5555;
+    opacity: 0.9;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 80px;
+    animation: bossPulse 0.5s infinite alternate;
+}
 
-/* Responsive */
-@media(max-width:768px){
-    .service-cards, .team-cards, .blog-cards { flex-direction:column; align-items:center; }
-    .menu-toggle { display:block; }
-    .nav-links { display:none; flex-direction:column; gap:10px; background:#111; position:absolute; top:70px; right:40px; padding:20px; border-radius:10px; }
-    .nav-links.active { display:flex; }
+/* انیمیشن پیشرفته باس‌ها */
+@keyframes bossPulse {
+    0% { transform: scale(1); box-shadow: 0 0 30px #ff0000, 0 0 60px #ff5555; }
+    50% { transform: scale(1.1); box-shadow: 0 0 50px #ff0000, 0 0 100px #ff5555; }
+    100% { transform: scale(1); box-shadow: 0 0 30px #ff0000, 0 0 60px #ff5555; }
 }
